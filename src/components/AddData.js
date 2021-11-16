@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+// import React, { useState, useEffect } from "react";
 import { getTodos, addTodos } from "../query/query";
 import { useMutation } from "@apollo/client";
 
@@ -9,7 +9,9 @@ function AddData({ setTodo, todo, userId }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    todo && addTodo({ variables: { todo, userId } });
+    todo
+      ? addTodo({ variables: { todo, userId } })
+      : window.alert("Enter Data!");
   }
   function addData(e) {
     setTodo(e.target.value);

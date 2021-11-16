@@ -16,10 +16,17 @@ export const addTodos = gql`
     }
   }
 `;
-export const deleteTodos = gql`
+export const deleteTodo = gql`
   mutation ($id: ID!) {
     deleteTodo(id: $id) {
       todo
+    }
+  }
+`;
+export const deleteTodos = gql`
+  mutation ($id: ID!) {
+    deleteTodos(id: $id) {
+      deletedCount
     }
   }
 `;
@@ -44,6 +51,14 @@ export const addUser = gql`
   mutation ($name: String!) {
     addUser(name: $name) {
       id
+      name
+    }
+  }
+`;
+
+export const deleteUser = gql`
+  mutation ($id: ID!) {
+    deleteUser(id: $id) {
       name
     }
   }

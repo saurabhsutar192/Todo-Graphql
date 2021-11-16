@@ -10,12 +10,12 @@ function AddUser({ setUserId }) {
   let [name, setName] = useState("");
 
   useEffect(() => {
-    data && setUserId(data.addUser.id);
-  }, [data?.addUser.id]);
+    !loading && data && setUserId(data.addUser.id);
+  }, [data]);
 
   function handleSubmit(e) {
     e.preventDefault();
-    add_user({ variables: { name } });
+    name ? add_user({ variables: { name } }) : window.alert("Add name!");
   }
 
   function addName(e) {

@@ -1,23 +1,23 @@
 import { useQuery, useMutation } from "@apollo/client";
-import { getTodos, deleteTodos, updateTodos } from "../query/query";
-import { useEffect } from "react";
+import { getTodos, deleteTodo, updateTodos } from "../query/query";
+// import { useEffect } from "react";
 
 function DataList({ todo, userId }) {
   let { data, loading } = useQuery(getTodos, {
     variables: { userId },
   });
-  let [removeTodo, deletedData] = useMutation(deleteTodos, {
+  let [removeTodo, deletedData] = useMutation(deleteTodo, {
     refetchQueries: [getTodos],
   });
   let [updTodo, updatedData] = useMutation(updateTodos, {
     refetchQueries: [getTodos],
   });
 
-  function deleteTodo(id) {
+  function del_Todo(id) {
     removeTodo({ variables: { id } });
   }
   function updateTodo(id) {
-    updTodo({ variables: { id, todo } });
+    todo ? updTodo({ variables: { id, todo } }) : window.alert("Enter Data!");
   }
 
   return (
@@ -36,7 +36,7 @@ function DataList({ todo, userId }) {
               </button>
               <button
                 onClick={() => {
-                  deleteTodo(todo.id);
+                  del_Todo(todo.id);
                 }}
               >
                 Delete

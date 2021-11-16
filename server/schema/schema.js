@@ -13,6 +13,13 @@ const {
   GraphQLNonNull,
 } = graphql;
 
+const delType = new GraphQLObjectType({
+  name: "delType",
+  fields: () => ({
+    deletedCount: { type: GraphQLInt },
+  }),
+});
+
 const todoType = new GraphQLObjectType({
   name: "Todo",
   fields: () => ({
@@ -106,6 +113,15 @@ const Mutation = new GraphQLObjectType({
         return Todo.deleteOne({ _id: args.id });
       },
     },
+    deleteTodos: {
+      type: delType,
+      args: {
+        id: { type: new GraphQLNonNull(GraphQLID) },
+      },
+      resolve(parent, args) {
+        return Todo.deleteMany({ userId: args.id });
+      },
+    },
     updateTodo: {
       type: todoType,
       args: {
@@ -126,6 +142,15 @@ const Mutation = new GraphQLObjectType({
           name: args.name,
         });
         return user.save();
+      },
+    },
+    deleteUser: {
+      type: userType,
+      args: {
+        id: { type: new GraphQLNonNull(GraphQLID) },
+      },
+      resolve(parent, args) {
+        return User.deleteOne({ _id: args.id });
       },
     },
   },
