@@ -1,23 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import AddData from "./components/AddData";
+import DataList from "./components/DataList";
+import AddUser from "./components/AddUser";
+import SelectUser from "./components/SelectUser";
+import { useState } from "react";
 
 function App() {
+  let [todo, setTodo] = useState("");
+  let [userId, setUserId] = useState("");
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <AddUser setUserId={setUserId} />
+      <SelectUser setUserId={setUserId} userId={userId} />
+      <AddData setTodo={setTodo} todo={todo} userId={userId} />
+      <DataList todo={todo} userId={userId} />
     </div>
   );
 }
