@@ -2,6 +2,7 @@
 import { getTodos, addTodos } from "../query/query";
 import { useMutation } from "@apollo/client";
 import AddRoundedIcon from "@mui/icons-material/AddRounded";
+import "../css/addData.css";
 
 function AddData({ setTodo, todo, user }) {
   let [addTodo, addedData] = useMutation(addTodos, {
@@ -11,7 +12,9 @@ function AddData({ setTodo, todo, user }) {
   function handleSubmit(e) {
     e.preventDefault();
     todo
-      ? addTodo({ variables: { todo, userId: user.id } })
+      ? addTodo({ variables: { todo, userId: user.id } }).then(() => {
+          setTodo("");
+        })
       : window.alert("Enter Data!");
   }
   function addData(e) {
@@ -23,11 +26,11 @@ function AddData({ setTodo, todo, user }) {
   // }, [userId]);
 
   return (
-    <div>
+    <div className="addContainer">
       <form onSubmit={handleSubmit}>
         <input type="text" onChange={addData} value={todo}></input>
         <button type="submit">
-          <AddRoundedIcon />
+          <AddRoundedIcon fontSize="large" />
         </button>
       </form>
     </div>

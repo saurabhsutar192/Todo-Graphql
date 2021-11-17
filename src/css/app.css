@@ -24,6 +24,8 @@ body {
     box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px; }
   body button {
     cursor: pointer; }
+  body li {
+    list-style: none; }
 
 .noUser {
   width: 100%;
@@ -35,3 +37,10 @@ body {
     .noUser > .addUserContainer input {
       width: 500px;
       margin-top: 20%; }
+
+.greetings {
+  width: 100%;
+  text-align: center;
+  padding: 50px;
+  font-size: 3rem;
+  text-transform: capitalize; }

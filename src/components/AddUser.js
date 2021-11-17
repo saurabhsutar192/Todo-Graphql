@@ -15,14 +15,16 @@ function AddUser({ setUser }) {
     !loading &&
       data &&
       setUser({ name: data.addUser?.name, id: data.addUser?.id });
-  }, [data]);
+  }, [data, loading]);
 
   function handleSubmit(e) {
     e.preventDefault();
     name
-      ? add_user({ variables: { name } }).catch((err) =>
-          window.alert(err.message)
-        )
+      ? add_user({ variables: { name } })
+          .then(() => {
+            setName("");
+          })
+          .catch((err) => window.alert(err.message))
       : window.alert("Add name!");
   }
 
@@ -35,7 +37,7 @@ function AddUser({ setUser }) {
       <form onSubmit={handleSubmit}>
         <input
           type="text"
-          placeholder="Enter Username"
+          placeholder="Add User"
           onChange={addName}
           value={name}
         />

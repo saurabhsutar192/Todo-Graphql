@@ -1,6 +1,9 @@
 import { useEffect } from "react";
 import { getUsers, deleteUser, getTodos, deleteTodos } from "../query/query";
 import { useQuery, useMutation } from "@apollo/client";
+import "../css/selectUser.css";
+import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
+import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 
 function SelectUser({ setUser, user, setIfUser }) {
   let { data, loading } = useQuery(getUsers);
@@ -12,23 +15,24 @@ function SelectUser({ setUser, user, setIfUser }) {
   });
 
   useEffect(() => {
-    !loading && !user.id && setUser({ id: data.users[0]?.id });
+    !loading &&
+      !user.id &&
+      setUser({ name: data.users[0].name, id: data.users[0].id });
   }, [data, loading]);
 
   function setActiveUser(arr) {
-    // console.log(e.target.value);
+    console.log("asds");
     setUser({ name: arr.name, id: arr.id });
   }
 
-  function removeUser() {
-    del_user({ variables: { id: user.id } });
-    setUser({ id: "" });
-    del_todos({ variables: { id: user.id } });
+  function removeUser(arr) {
+    del_user({ variables: { id: arr.id } }).then(() => setUser({ id: "" }));
+
+    del_todos({ variables: { id: arr.id } });
   }
 
   return (
     <div className="selectUserContainer">
-      <div>{user.name}</div>
       <ul value={user.id}>
         {data?.users.map((arr) => (
           <li
@@ -36,12 +40,24 @@ function SelectUser({ setUser, user, setIfUser }) {
             key={arr.id}
             // value={arr.id}
           >
-            {arr.name}
+            <div> {arr.name}</div>
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                removeUser(arr);
+              }}
+            >
+              <CloseRoundedIcon />
+            </button>
           </li>
         ))}
       </ul>
-
-      <button onClick={removeUser}>Delete</button>
+      <section>
+        <div className="menuIcon">
+          <MenuRoundedIcon fontSize="large" />
+        </div>
+        {/* <div className="user">{user.name}</div> */}
+      </section>
     </div>
   );
 }

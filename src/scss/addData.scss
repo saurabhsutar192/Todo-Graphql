@@ -1,0 +1,20 @@
+@import "./app.scss";
+
+.addContainer {
+  width: 100%;
+  text-align: center;
+  form {
+    @extend %centrofy;
+  }
+
+  input {
+    padding: 20px;
+    width: 40%;
+    margin-right: 20px;
+  }
+  button {
+    background: $dark-color;
+    color: white;
+    padding: 10px 11px;
+  }
+}

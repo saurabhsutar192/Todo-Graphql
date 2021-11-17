@@ -21,7 +21,7 @@ function App() {
     <div className="App">
       {ifUser ? (
         <div>
-          <h1>Hello, {user.name}</h1>
+          <h1 className="greetings">Hello, {user.name}</h1>
           <AddUser setUser={setUser} />
           <SelectUser setUser={setUser} user={user} setIfUser={setIfUser} />
           <AddData setTodo={setTodo} todo={todo} user={user} />

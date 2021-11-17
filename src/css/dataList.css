@@ -1,0 +1,71 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Sacramento&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif; }
+
+.noUser, .dataListContainer ul, .dataListContainer li {
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+body {
+  background: #f0ffdc;
+  color: #1c4000; }
+  body h1 {
+    font-family: "Sacramento", cursive; }
+  body input,
+  body button {
+    background: white;
+    border: none;
+    outline: none;
+    border-radius: 500px;
+    box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px; }
+  body button {
+    cursor: pointer; }
+  body li {
+    list-style: none; }
+
+.noUser {
+  width: 100%;
+  height: 100vh;
+  margin-top: -5%;
+  flex-direction: column; }
+  .noUser > .addUserContainer {
+    position: static; }
+    .noUser > .addUserContainer input {
+      width: 500px;
+      margin-top: 20%; }
+
+.greetings {
+  width: 100%;
+  text-align: center;
+  padding: 50px;
+  font-size: 3rem;
+  text-transform: capitalize; }
+
+.dataListContainer ul {
+  color: #1c4000;
+  margin: 20px;
+  flex-wrap: wrap;
+  justify-content: flex-start; }
+
+.dataListContainer li {
+  min-width: 150px;
+  height: 100px;
+  flex-direction: column;
+  box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+  background: white;
+  margin: 10px;
+  padding: 20px;
+  border-radius: 20px; }
+  .dataListContainer li button {
+    font-family: "Sacramento", cursive;
+    font-size: 1.2rem;
+    color: #1c4000; }
+  .dataListContainer li div {
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between; }

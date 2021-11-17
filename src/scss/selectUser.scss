@@ -1,0 +1,47 @@
+@import "./app.scss";
+
+.selectUserContainer {
+  position: fixed;
+  bottom: 30px;
+  left: 30px;
+  section {
+    @extend %centrofy;
+    // .user {
+    //   background: white;
+    //   width: fit-content;
+    //   padding: 20px 40px;
+    //   border-radius: 500px;
+    //   margin-left: 20px;
+    // }
+    .menuIcon {
+      background: $dark-color;
+      color: white;
+      padding: 9px 11px;
+      border-radius: 500px;
+    }
+  }
+  ul {
+    position: absolute;
+    bottom: 60px;
+    left: 0px;
+    li {
+      @extend %centrofy;
+      justify-content: flex-start;
+      margin-bottom: 10px;
+    }
+    div {
+      background: white;
+      padding: 10px 20px;
+      border-radius: 500px;
+      margin-right: 10px;
+      cursor: pointer;
+      box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px,
+        rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    }
+    button {
+      padding: 5px;
+      box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px,
+        rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    }
+  }
+}

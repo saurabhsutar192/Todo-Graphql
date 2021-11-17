@@ -33,6 +33,9 @@ body {
   button {
     cursor: pointer;
   }
+  li {
+    list-style: none;
+  }
 }
 
 .noUser {
@@ -48,4 +51,12 @@ body {
       margin-top: 20%;
     }
   }
+}
+
+.greetings {
+  width: 100%;
+  text-align: center;
+  padding: 50px;
+  font-size: 3rem;
+  text-transform: capitalize;
 }

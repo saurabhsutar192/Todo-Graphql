@@ -1,6 +1,7 @@
 import { useQuery, useMutation } from "@apollo/client";
 import { getTodos, deleteTodo, updateTodos } from "../query/query";
 import { useEffect } from "react";
+import "../css/dataList.css";
 
 function DataList({ todo, user }) {
   let { data, loading } = useQuery(getTodos, {
@@ -25,26 +26,28 @@ function DataList({ todo, user }) {
   // }, [userId]);
 
   return (
-    <div>
+    <div className="dataListContainer">
       <ul>
         {!loading ? (
           data?.todos.map((todo) => (
             <li key={todo.id}>
-              <span style={{ marginRight: "30px" }}>{todo.todo}</span>
-              <button
-                onClick={() => {
-                  updateTodo(todo.id);
-                }}
-              >
-                Update
-              </button>
-              <button
-                onClick={() => {
-                  del_Todo(todo.id);
-                }}
-              >
-                Delete
-              </button>
+              <span>{todo.todo}</span>
+              <div>
+                <button
+                  onClick={() => {
+                    updateTodo(todo.id);
+                  }}
+                >
+                  update
+                </button>
+                <button
+                  onClick={() => {
+                    del_Todo(todo.id);
+                  }}
+                >
+                  delete
+                </button>
+              </div>
             </li>
           ))
         ) : (
