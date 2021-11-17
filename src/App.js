@@ -10,7 +10,7 @@ import "./css/app.css";
 function App() {
   let { data, loading } = useQuery(getUsers);
   let [todo, setTodo] = useState("");
-  let [userId, setUserId] = useState("");
+  let [user, setUser] = useState({ name: "", id: "" });
   let [ifUser, setIfUser] = useState(false);
 
   useEffect(() => {
@@ -21,19 +21,16 @@ function App() {
     <div className="App">
       {ifUser ? (
         <div>
-          <AddUser setUserId={setUserId} />
-          <SelectUser
-            setUserId={setUserId}
-            userId={userId}
-            setIfUser={setIfUser}
-          />
-          <AddData setTodo={setTodo} todo={todo} userId={userId} />
-          <DataList todo={todo} userId={userId} />
+          <h1>Hello, {user.name}</h1>
+          <AddUser setUser={setUser} />
+          <SelectUser setUser={setUser} user={user} setIfUser={setIfUser} />
+          <AddData setTodo={setTodo} todo={todo} user={user} />
+          <DataList todo={todo} user={user} />
         </div>
       ) : (
         <div className="noUser">
           <h1>No Users Found!</h1>
-          <AddUser setUserId={setUserId} setIfUser={setIfUser} />
+          <AddUser setUser={setUser} setIfUser={setIfUser} />
         </div>
       )}
     </div>

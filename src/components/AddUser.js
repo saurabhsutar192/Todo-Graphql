@@ -4,7 +4,7 @@ import { addUser, getUsers } from "../query/query";
 import "../css/addUser.css";
 import AddRoundedIcon from "@mui/icons-material/AddRounded";
 
-function AddUser({ setUserId }) {
+function AddUser({ setUser }) {
   let [add_user, { data, loading }] = useMutation(addUser, {
     refetchQueries: [getUsers],
   });
@@ -12,7 +12,9 @@ function AddUser({ setUserId }) {
   let [name, setName] = useState("");
 
   useEffect(() => {
-    !loading && data && setUserId(data.addUser?.id);
+    !loading &&
+      data &&
+      setUser({ name: data.addUser?.name, id: data.addUser?.id });
   }, [data]);
 
   function handleSubmit(e) {

@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { getUsers, deleteUser, getTodos, deleteTodos } from "../query/query";
 import { useQuery, useMutation } from "@apollo/client";
 
-function SelectUser({ setUserId, userId, setIfUser }) {
+function SelectUser({ setUser, user, setIfUser }) {
   let { data, loading } = useQuery(getUsers);
   let [del_user, deletedUserData] = useMutation(deleteUser, {
     refetchQueries: [getUsers],
@@ -12,26 +12,31 @@ function SelectUser({ setUserId, userId, setIfUser }) {
   });
 
   useEffect(() => {
-    !loading && !userId && setUserId(data.users[0]?.id);
+    !loading && !user.id && setUser({ id: data.users[0]?.id });
   }, [data, loading]);
 
-  function setActiveUser(e) {
+  function setActiveUser(arr) {
     // console.log(e.target.value);
-    setUserId(e.target.value);
+    setUser({ name: arr.name, id: arr.id });
   }
 
   function removeUser() {
-    del_user({ variables: { id: userId } });
-    setUserId("");
-    del_todos({ variables: { id: userId } });
+    del_user({ variables: { id: user.id } });
+    setUser({ id: "" });
+    del_todos({ variables: { id: user.id } });
   }
 
   return (
-    <div>
-      <ul value={userId}>
-        {data?.users.map((user) => (
-          <li onClick={setActiveUser} key={user.id} value={user.id}>
-            {user.name}
+    <div className="selectUserContainer">
+      <div>{user.name}</div>
+      <ul value={user.id}>
+        {data?.users.map((arr) => (
+          <li
+            onClick={() => setActiveUser(arr)}
+            key={arr.id}
+            // value={arr.id}
+          >
+            {arr.name}
           </li>
         ))}
       </ul>

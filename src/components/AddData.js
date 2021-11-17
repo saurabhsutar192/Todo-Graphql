@@ -3,7 +3,7 @@ import { getTodos, addTodos } from "../query/query";
 import { useMutation } from "@apollo/client";
 import AddRoundedIcon from "@mui/icons-material/AddRounded";
 
-function AddData({ setTodo, todo, userId }) {
+function AddData({ setTodo, todo, user }) {
   let [addTodo, addedData] = useMutation(addTodos, {
     refetchQueries: [getTodos],
   });
@@ -11,7 +11,7 @@ function AddData({ setTodo, todo, userId }) {
   function handleSubmit(e) {
     e.preventDefault();
     todo
-      ? addTodo({ variables: { todo, userId } })
+      ? addTodo({ variables: { todo, userId: user.id } })
       : window.alert("Enter Data!");
   }
   function addData(e) {
