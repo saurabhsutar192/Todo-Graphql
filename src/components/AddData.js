@@ -1,6 +1,7 @@
 // import React, { useState, useEffect } from "react";
 import { getTodos, addTodos } from "../query/query";
 import { useMutation } from "@apollo/client";
+import AddRoundedIcon from "@mui/icons-material/AddRounded";
 
 function AddData({ setTodo, todo, userId }) {
   let [addTodo, addedData] = useMutation(addTodos, {
@@ -25,7 +26,9 @@ function AddData({ setTodo, todo, userId }) {
     <div>
       <form onSubmit={handleSubmit}>
         <input type="text" onChange={addData} value={todo}></input>
-        <button type="submit">Add</button>
+        <button type="submit">
+          <AddRoundedIcon />
+        </button>
       </form>
     </div>
   );

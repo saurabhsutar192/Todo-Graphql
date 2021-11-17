@@ -1,0 +1,21 @@
+@import "./app.scss";
+.addUserContainer {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  form {
+    display: flex;
+    align-items: flex-end;
+  }
+  input {
+    margin-right: 20px;
+    padding: 20px;
+    width: 300px;
+  }
+
+  button {
+    padding: 9px 10px;
+    background: $dark-color;
+    color: white;
+  }
+}

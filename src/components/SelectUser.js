@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { getUsers, deleteUser, getTodos, deleteTodos } from "../query/query";
 import { useQuery, useMutation } from "@apollo/client";
 
-function SelectUser({ setUserId, userId }) {
+function SelectUser({ setUserId, userId, setIfUser }) {
   let { data, loading } = useQuery(getUsers);
   let [del_user, deletedUserData] = useMutation(deleteUser, {
     refetchQueries: [getUsers],
@@ -12,11 +12,11 @@ function SelectUser({ setUserId, userId }) {
   });
 
   useEffect(() => {
-    !loading && !userId && setUserId(data.users[0].id);
+    !loading && !userId && setUserId(data.users[0]?.id);
   }, [data, loading]);
 
   function setActiveUser(e) {
-    console.log(e.target.value);
+    // console.log(e.target.value);
     setUserId(e.target.value);
   }
 
@@ -27,20 +27,33 @@ function SelectUser({ setUserId, userId }) {
   }
 
   return (
-    <div style={{ margin: "20px 0", display: "flex" }}>
-      <form>
-        <label>Select User: </label>
-        <select onChange={setActiveUser} value={userId}>
-          {data?.users.map((user) => (
-            <option key={user.id} value={user.id}>
-              {user.name}
-            </option>
-          ))}
-        </select>
-      </form>
+    <div>
+      <ul value={userId}>
+        {data?.users.map((user) => (
+          <li onClick={setActiveUser} key={user.id} value={user.id}>
+            {user.name}
+          </li>
+        ))}
+      </ul>
+
       <button onClick={removeUser}>Delete</button>
     </div>
   );
 }
 
 export default SelectUser;
+
+// return (
+//   <div>
+//     <form>
+//       <select onChange={setActiveUser} value={userId}>
+//         {data?.users.map((user) => (
+//           <option key={user.id} value={user.id}>
+//             {user.name}
+//           </option>
+//         ))}
+//       </select>
+//     </form>
+//     <button onClick={removeUser}>Delete</button>
+//   </div>
+// );

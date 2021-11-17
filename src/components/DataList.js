@@ -1,6 +1,6 @@
 import { useQuery, useMutation } from "@apollo/client";
 import { getTodos, deleteTodo, updateTodos } from "../query/query";
-// import { useEffect } from "react";
+import { useEffect } from "react";
 
 function DataList({ todo, userId }) {
   let { data, loading } = useQuery(getTodos, {
@@ -19,6 +19,10 @@ function DataList({ todo, userId }) {
   function updateTodo(id) {
     todo ? updTodo({ variables: { id, todo } }) : window.alert("Enter Data!");
   }
+
+  useEffect(() => {
+    console.log(userId);
+  }, [userId]);
 
   return (
     <div>

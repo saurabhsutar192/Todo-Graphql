@@ -137,11 +137,16 @@ const Mutation = new GraphQLObjectType({
       args: {
         name: { type: new GraphQLNonNull(GraphQLString) },
       },
-      resolve(parent, args) {
-        let user = new User({
-          name: args.name,
-        });
-        return user.save();
+      async resolve(parent, args) {
+        let oldUser = await User.find({ name: args.name });
+        if (oldUser.length !== 0) {
+          return new Error("User already exists!");
+        } else {
+          let user = new User({
+            name: args.name,
+          });
+          return user.save();
+        }
       },
     },
     deleteUser: {
