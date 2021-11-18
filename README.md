@@ -1,4 +1,7 @@
-# Getting Started with Create React App
+If you want to use it locally connect your own database in **server/index.js** in **mongoose.connect()**
+
+
+# Getting Started 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
