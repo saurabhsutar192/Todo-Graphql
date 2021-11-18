@@ -3,6 +3,8 @@ import { getTodos, deleteTodo, updateTodos } from "../query/query";
 // import { useEffect } from "react";
 import "../css/dataList.css";
 // import gsap from "gsap";
+import ClipLoader from "react-spinners/ClipLoader";
+
 function DataList({ todo, user }) {
   let { data, loading } = useQuery(getTodos, {
     variables: { userId: user.id },
@@ -51,7 +53,9 @@ function DataList({ todo, user }) {
             </li>
           ))
         ) : (
-          <li>..Loading</li>
+          <li>
+            <ClipLoader color={"#1c4000"} />
+          </li>
         )}
       </ul>
     </div>
