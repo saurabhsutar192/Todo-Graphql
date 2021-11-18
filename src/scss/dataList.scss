@@ -6,7 +6,7 @@
     margin: 10px;
     @extend %centrofy;
     flex-wrap: wrap;
-    justify-content: flex-start;
+    justify-content: center;
   }
   li {
     min-width: 150px;
