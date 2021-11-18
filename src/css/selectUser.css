@@ -50,12 +50,14 @@ body {
   bottom: 30px;
   left: 30px; }
   .selectUserContainer section .menuIcon {
+    cursor: pointer;
     background: #1c4000;
     color: white;
     padding: 9px 11px;
     border-radius: 500px; }
   .selectUserContainer ul {
     position: absolute;
+    z-index: 2;
     bottom: 60px;
     left: 0px; }
     .selectUserContainer ul li {
@@ -69,5 +71,19 @@ body {
       cursor: pointer;
       box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px; }
     .selectUserContainer ul button {
+      cursor: pointer;
       padding: 5px;
       box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px; }
+
+@media (max-width: 640px) {
+  .selectUserContainer {
+    left: auto;
+    right: 30px;
+    bottom: 100px; }
+    .selectUserContainer ul {
+      left: auto;
+      right: 0; }
+      .selectUserContainer ul li {
+        flex-direction: row-reverse; }
+      .selectUserContainer ul div {
+        margin: 0 0 0 10px; } }

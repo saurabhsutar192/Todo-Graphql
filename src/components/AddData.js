@@ -28,7 +28,12 @@ function AddData({ setTodo, todo, user }) {
   return (
     <div className="addContainer">
       <form onSubmit={handleSubmit}>
-        <input type="text" onChange={addData} value={todo}></input>
+        <input
+          type="text"
+          onChange={addData}
+          placeholder="Write Something!"
+          value={todo}
+        ></input>
         <button type="submit">
           <AddRoundedIcon fontSize="large" />
         </button>

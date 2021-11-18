@@ -1,8 +1,8 @@
 import { useQuery, useMutation } from "@apollo/client";
 import { getTodos, deleteTodo, updateTodos } from "../query/query";
-import { useEffect } from "react";
+// import { useEffect } from "react";
 import "../css/dataList.css";
-
+// import gsap from "gsap";
 function DataList({ todo, user }) {
   let { data, loading } = useQuery(getTodos, {
     variables: { userId: user.id },
@@ -22,17 +22,17 @@ function DataList({ todo, user }) {
   }
 
   // useEffect(() => {
-  //   console.log(userId);
-  // }, [userId]);
+  //   !loading && gsap.from(".todos", 0.5, { scale: 0, stagger: 0.05 });
+  // }, [loading]);
 
   return (
     <div className="dataListContainer">
       <ul>
         {!loading ? (
           data?.todos.map((todo) => (
-            <li key={todo.id}>
-              <span>{todo.todo}</span>
-              <div>
+            <li className="todos" key={todo.id}>
+              <div>{todo.todo}</div>
+              <section>
                 <button
                   onClick={() => {
                     updateTodo(todo.id);
@@ -47,7 +47,7 @@ function DataList({ todo, user }) {
                 >
                   delete
                 </button>
-              </div>
+              </section>
             </li>
           ))
         ) : (

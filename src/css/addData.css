@@ -50,9 +50,14 @@ body {
   text-align: center; }
   .addContainer input {
     padding: 20px;
-    width: 40%;
-    margin-right: 20px; }
+    width: 500px;
+    margin: 0 20px; }
   .addContainer button {
     background: #1c4000;
     color: white;
-    padding: 10px 11px; }
+    padding: 10px 11px;
+    margin-right: 20px; }
+
+@media (max-width: 640px) {
+  .addContainer input {
+    width: 70%; } }

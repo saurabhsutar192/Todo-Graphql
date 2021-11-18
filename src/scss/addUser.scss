@@ -8,14 +8,24 @@
     align-items: flex-end;
   }
   input {
-    margin-right: 20px;
+    margin: 0 20px;
     padding: 20px;
     width: 300px;
+    z-index: 0;
   }
 
   button {
     padding: 9px 10px;
     background: $dark-color;
     color: white;
+    z-index: 1;
+  }
+}
+
+@media (max-width: 440px) {
+  .addUserContainer {
+    input {
+      width: 100%;
+    }
   }
 }

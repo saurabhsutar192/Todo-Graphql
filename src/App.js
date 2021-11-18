@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import { getUsers } from "./query/query";
 import { useQuery } from "@apollo/client";
 import "./css/app.css";
+import ClipLoader from "react-spinners/ClipLoader";
 
 function App() {
   let { data, loading } = useQuery(getUsers);
@@ -15,22 +16,28 @@ function App() {
 
   useEffect(() => {
     !loading && data.users.length !== 0 ? setIfUser(true) : setIfUser(false);
-  }, [data]);
+  }, [data, loading]);
 
   return (
     <div className="App">
-      {ifUser ? (
-        <div>
-          <h1 className="greetings">Hello, {user.name}</h1>
-          <AddUser setUser={setUser} />
-          <SelectUser setUser={setUser} user={user} setIfUser={setIfUser} />
-          <AddData setTodo={setTodo} todo={todo} user={user} />
-          <DataList todo={todo} user={user} />
-        </div>
+      {!loading ? (
+        ifUser ? (
+          <div>
+            <h1 className="greetings">Hello, {user.name}</h1>
+            <AddUser setUser={setUser} />
+            <SelectUser setUser={setUser} user={user} />
+            <AddData setTodo={setTodo} todo={todo} user={user} />
+            <DataList todo={todo} user={user} />
+          </div>
+        ) : (
+          <div className="noUser">
+            <h1>No Users Found!</h1>
+            <AddUser setUser={setUser} />
+          </div>
+        )
       ) : (
-        <div className="noUser">
-          <h1>No Users Found!</h1>
-          <AddUser setUser={setUser} setIfUser={setIfUser} />
+        <div>
+          <ClipLoader color={"#1c4000"} />
         </div>
       )}
     </div>

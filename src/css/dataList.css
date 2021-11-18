@@ -47,24 +47,29 @@ body {
 
 .dataListContainer ul {
   color: #1c4000;
-  margin: 20px;
+  margin: 10px;
   flex-wrap: wrap;
   justify-content: flex-start; }
 
 .dataListContainer li {
   min-width: 150px;
-  height: 100px;
+  max-width: 100%;
   flex-direction: column;
   box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
   background: white;
   margin: 10px;
   padding: 20px;
   border-radius: 20px; }
+  .dataListContainer li div {
+    width: 100%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    text-align: center; }
   .dataListContainer li button {
     font-family: "Sacramento", cursive;
     font-size: 1.2rem;
     color: #1c4000; }
-  .dataListContainer li div {
+  .dataListContainer li section {
     margin-top: 20px;
     width: 100%;
     display: flex;
