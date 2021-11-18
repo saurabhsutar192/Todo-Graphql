@@ -1,4 +1,4 @@
-**If you want to use it locallu connect your own database in server/index.js
+If you want to use it locallu connect your own database in **server/index.js** in **mongoose.connect()**
 
 
 # Getting Started 
